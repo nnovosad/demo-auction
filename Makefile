@@ -245,6 +245,8 @@ testing-build-testing-api-php-cli:
 
 testing-build-cucumber:
 	DOCKER_BUILDKIT=1 docker --log-level=debug build --pull --build-arg BUILDKIT_INLINE_CACHE=1 \
+	--cache-from ${REGISTRY}/auction-cucumber-node-cli:cache \
+	--tag ${REGISTRY}/auction-cucumber-node-cli:cache \
 	--tag ${REGISTRY}/auction-cucumber-node-cli:${IMAGE_TAG} \
 	--file cucumber/docker/testing/node/Dockerfile \
 	cucumber
@@ -259,7 +261,7 @@ push-testing-build-cache-api-php-cli:
 	docker push ${REGISTRY}/auction-testing-api-php-cli:cache
 
 push-testing-build-cache-cucumber:
-	docker push ${REGISTRY}/auction-testing-cucumber:cache
+	docker push ${REGISTRY}/auction-cucumber-node-cli:cache
 
 testing-init:
 	COMPOSE_PROJECT_NAME=testing docker-compose -f docker-compose-testing.yml up -d
