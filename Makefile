@@ -28,7 +28,7 @@ docker-pull:
 	docker-compose pull --include-deps
 
 docker-build:
-	docker-compose build
+	DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose build
 
 api-clear:
 	docker run --rm -v ${PWD}/api:/app -w /app alpine sh -c 'rm -rf var/cache/* var/log/* var/test/*'
