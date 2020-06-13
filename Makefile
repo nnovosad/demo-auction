@@ -193,6 +193,7 @@ push-build-cache-gateway:
 	docker push ${REGISTRY}/auction-gateway:cache
 
 push-build-cache-frontend:
+	docker push ${REGISTRY}/auction-frontend:cache-builder
 	docker push ${REGISTRY}/auction-frontend:cache
 
 push-build-cache-api:
